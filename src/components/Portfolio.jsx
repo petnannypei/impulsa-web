@@ -5,45 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function DeviceMockup() {
-  return (
-    <div className="relative flex items-end justify-start pl-3" style={{ height: '152px' }}>
-      {/* Desktop frame */}
-      <div
-        className="rounded-t-lg overflow-hidden"
-        style={{ width: '66%', height: '136px', backgroundColor: '#1E4D5E' }}
-      >
-        <div className="p-3 space-y-1.5">
-          <div className="h-1.5 w-1/3 rounded" style={{ backgroundColor: 'rgba(255,255,255,0.35)' }} />
-          <div className="h-7 w-full rounded mt-1" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
-          <div className="h-1.5 w-3/4 rounded" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
-          <div className="h-1.5 w-2/3 rounded" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
-          <div className="h-5 w-20 rounded-md mt-1.5" style={{ backgroundColor: 'rgba(255,255,255,0.28)' }} />
-        </div>
-      </div>
-      {/* Mobile frame */}
-      <div
-        className="absolute right-3 bottom-0 rounded-xl overflow-hidden"
-        style={{
-          width: '29%',
-          height: '116px',
-          backgroundColor: '#2B6478',
-          border: '1.5px solid rgba(255,255,255,0.18)',
-          boxShadow: '-4px 6px 16px rgba(0,0,0,0.35)',
-        }}
-      >
-        <div className="p-1.5 space-y-1">
-          <div className="h-1.5 w-full rounded" style={{ backgroundColor: 'rgba(255,255,255,0.25)' }} />
-          <div className="h-1.5 w-3/4 rounded" style={{ backgroundColor: 'rgba(255,255,255,0.18)' }} />
-          <div className="h-4 w-full rounded mt-0.5" style={{ backgroundColor: 'rgba(255,255,255,0.14)' }} />
-          <div className="h-1.5 w-full rounded" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
-          <div className="h-4 w-full rounded-md" style={{ backgroundColor: 'rgba(255,255,255,0.28)' }} />
-        </div>
-      </div>
-    </div>
-  )
-}
-
 const PROJECTS = [
   {
     id: 'petNanny',
@@ -53,6 +14,7 @@ const PROJECTS = [
     tags: ['Mascotas', 'Formulario', 'Interactiva', 'Google Sheets'],
     url: 'https://pet-nanny-pereira.vercel.app/',
     sector: 'Cuidado de mascotas a domicilio',
+    logo: '/LOGOS/pet-nanny-logo.png',
   },
   {
     id: 'qccs',
@@ -62,6 +24,7 @@ const PROJECTS = [
     tags: ['Construcción', 'Consultoría', 'Profesional', 'Certificaciones'],
     url: 'https://qualitycontrolconsultants.pro/',
     sector: 'Consultoría técnica en construcción',
+    logo: '/LOGOS/QCCS-logo.jpg',
   },
 ]
 
@@ -127,12 +90,36 @@ export default function Portfolio() {
               key={project.id}
               className="portfolio-card flex-shrink-0 w-[320px] sm:w-[380px] bg-white rounded-2xl border border-gray-100 overflow-hidden snap-start"
             >
-              {/* Device mockup */}
-              <div className="p-5" style={{ backgroundColor: '#1E4D5E' }}>
-                <DeviceMockup />
+              {/* iframe preview */}
+              <div
+                className="relative overflow-hidden rounded-t-2xl"
+                style={{ aspectRatio: '16 / 9', background: '#f1f5f9' }}
+              >
+                <iframe
+                  src={project.url}
+                  title={project.title}
+                  loading="lazy"
+                  style={{
+                    width: '200%',
+                    height: '200%',
+                    transform: 'scale(0.5)',
+                    transformOrigin: 'top left',
+                    border: 'none',
+                    pointerEvents: 'none',
+                  }}
+                  tabIndex="-1"
+                  aria-hidden="true"
+                />
               </div>
               {/* Card content */}
               <div className="p-5">
+                {project.logo && (
+                  <img
+                    src={project.logo}
+                    alt={`Logo ${project.title}`}
+                    className="h-8 w-auto object-contain mb-3"
+                  />
+                )}
                 <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">
                   {project.sector}
                 </p>
