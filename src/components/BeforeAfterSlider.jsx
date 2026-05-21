@@ -79,14 +79,12 @@ function InstagramMockup() {
           </div>
         </div>
 
-        {/* Name + bio */}
+        {/* Name + bio — sin referencias a ciudad */}
         <p style={{ fontSize: 11, fontWeight: 700, color: '#262626', marginBottom: 2 }}>
-          Tu Negocio Pereira
+          Tu Negocio
         </p>
         <p style={{ fontSize: 10, color: '#262626', lineHeight: 1.55, marginBottom: 7 }}>
-          Servicios varios | Pereira 📍
-          <br />
-          <span style={{ color: '#00376b' }}>Link en bio ↓</span>
+          Servicios varios | Link en bio ↓
         </p>
 
         {/* Editar perfil */}
@@ -134,7 +132,7 @@ function InstagramMockup() {
         </svg>
       </div>
 
-      {/* Post grid — 6 squares with varied opacity to feel messy/unplanned */}
+      {/* Post grid — 6 cuadros con opacidad variada para look desordenado */}
       <div
         className="flex-1 grid grid-cols-3"
         style={{ gap: 2, background: '#dbdbdb', overflow: 'hidden' }}
@@ -146,6 +144,39 @@ function InstagramMockup() {
     </PhoneFrame>
   )
 }
+
+const WHY_ITEMS = [
+  {
+    bg: '#FEF9C3',
+    tc: '#92400E',
+    icon: (
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+    ),
+    label: 'Respuesta rápida',
+  },
+  {
+    bg: '#D1FAE5',
+    tc: '#065F46',
+    icon: (
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+    label: 'Garantía incluida',
+  },
+  {
+    bg: '#EDE9FE',
+    tc: '#5B21B6',
+    icon: (
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </svg>
+    ),
+    label: 'Bien calificados',
+  },
+]
 
 function LandingMockup() {
   return (
@@ -168,15 +199,20 @@ function LandingMockup() {
       {/* Hero */}
       <div
         className="flex-shrink-0"
-        style={{ background: '#E4F3F5', padding: '14px 14px 13px', textAlign: 'center' }}
+        style={{ background: '#E4F3F5', padding: '9px 14px', textAlign: 'center' }}
       >
-        <p style={{ fontSize: 9, color: '#3A9DA6', fontWeight: 700, letterSpacing: '0.1em', marginBottom: 6 }}>
-          ✦ DISPONIBLE EN PEREIRA
-        </p>
+        {/* Estrellas de calificación en lugar del badge de ciudad */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 2, marginBottom: 6 }}>
+          {[1, 2, 3, 4, 5].map((s) => (
+            <svg key={s} width="10" height="10" viewBox="0 0 24 24" fill="#F59E0B">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+            </svg>
+          ))}
+        </div>
         <h2 style={{ fontSize: 16, fontWeight: 800, color: '#1E4D5E', lineHeight: 1.2, marginBottom: 5 }}>
           Tu servicio estrella
         </h2>
-        <p style={{ fontSize: 9.5, color: '#4B6A7A', lineHeight: 1.5, marginBottom: 11 }}>
+        <p style={{ fontSize: 9.5, color: '#4B6A7A', lineHeight: 1.5, marginBottom: 10 }}>
           Calidad garantizada para tu hogar y negocio
         </p>
         <div
@@ -197,26 +233,26 @@ function LandingMockup() {
         </div>
       </div>
 
-      {/* Services */}
-      <div className="flex-shrink-0" style={{ padding: '10px 14px' }}>
+      {/* Servicios */}
+      <div className="flex-shrink-0" style={{ padding: '7px 14px 5px' }}>
         <p
           style={{
-            fontSize: 11,
+            fontSize: 10,
             fontWeight: 700,
             color: '#1E4D5E',
-            marginBottom: 8,
-            paddingBottom: 6,
-            borderBottom: '1px solid #f3f4f6',
+            marginBottom: 7,
+            paddingBottom: 5,
+            borderBottom: '1px solid #f0f4f8',
           }}
         >
           Nuestros servicios
         </p>
         {['Servicio premium #1', 'Atención personalizada', 'Resultados garantizados'].map((s) => (
-          <div key={s} style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 7 }}>
+          <div key={s} style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 6 }}>
             <div
               style={{
-                width: 16,
-                height: 16,
+                width: 15,
+                height: 15,
                 borderRadius: '50%',
                 background: '#C4E7EC',
                 flexShrink: 0,
@@ -225,17 +261,79 @@ function LandingMockup() {
                 justifyContent: 'center',
               }}
             >
-              <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
+              <svg width="7" height="7" viewBox="0 0 12 12" fill="none">
                 <path d="M2 6l3 3 5-5" stroke="#1E4D5E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <span style={{ fontSize: 10, color: '#374151' }}>{s}</span>
+            <span style={{ fontSize: 9.5, color: '#374151' }}>{s}</span>
           </div>
         ))}
       </div>
 
-      {/* Final CTA */}
-      <div style={{ padding: '4px 14px 10px', marginTop: 'auto', flexShrink: 0 }}>
+      {/* ¿Por qué elegirnos? */}
+      <div
+        className="flex-shrink-0"
+        style={{ padding: '6px 14px 7px', background: '#F8FAFC', borderTop: '1px solid #f0f4f8' }}
+      >
+        <p style={{ fontSize: 10, fontWeight: 700, color: '#1E4D5E', marginBottom: 8 }}>
+          ¿Por qué elegirnos?
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 6 }}>
+          {WHY_ITEMS.map(({ bg, tc, icon, label }) => (
+            <div
+              key={label}
+              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}
+            >
+              <div
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: 8,
+                  background: bg,
+                  color: tc,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                {icon}
+              </div>
+              <span style={{ fontSize: 8, color: '#374151', textAlign: 'center', lineHeight: 1.3 }}>
+                {label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Reseñas */}
+      <div
+        className="flex-shrink-0"
+        style={{ padding: '6px 14px 8px', borderTop: '1px solid #f0f4f8' }}
+      >
+        <p style={{ fontSize: 10, fontWeight: 700, color: '#1E4D5E', marginBottom: 6 }}>
+          Reseñas de clientes
+        </p>
+        {[
+          { text: '"Excelente, muy puntual y profesional"', name: 'Ana G.' },
+          { text: '"100% recomendado, resultados reales"', name: 'Carlos M.' },
+        ].map(({ text, name }) => (
+          <div key={name} style={{ marginBottom: 5 }}>
+            <div style={{ display: 'flex', gap: 1.5, marginBottom: 2 }}>
+              {[1, 2, 3, 4, 5].map((s) => (
+                <svg key={s} width="7" height="7" viewBox="0 0 24 24" fill="#F59E0B">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              ))}
+            </div>
+            <p style={{ fontSize: 8.5, color: '#374151', lineHeight: 1.4, fontStyle: 'italic' }}>{text}</p>
+            <p style={{ fontSize: 8, color: '#9CA3AF', marginTop: 1 }}>— {name}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* CTA final WhatsApp */}
+      <div className="flex-shrink-0" style={{ padding: '6px 14px 10px' }}>
         <div
           style={{
             background: '#25D366',
@@ -262,7 +360,7 @@ export default function BeforeAfterSlider() {
   const containerRef    = useRef(null)
   const dragging        = useRef(false)
   const [position, setPosition]             = useState(50)
-  const [containerWidth, setContainerWidth] = useState(0)
+  const [containerWidth, setContainerWidth] = useState(560)
 
   useEffect(() => {
     const obs = new ResizeObserver(([entry]) => setContainerWidth(entry.contentRect.width))
@@ -292,59 +390,76 @@ export default function BeforeAfterSlider() {
           <p className="text-lg text-gray-500">¿A dónde los mandas?</p>
         </div>
 
-        <div
-          ref={containerRef}
-          className="relative rounded-2xl overflow-hidden select-none shadow-xl border border-gray-100"
-          style={{ height: 'clamp(320px, 65vw, 480px)', cursor: 'ew-resize' }}
-          onMouseMove={(e) => { if (dragging.current) handleMove(e.clientX) }}
-          onTouchMove={(e) => handleMove(e.touches[0].clientX)}
-        >
-          {/* DESPUÉS — base layer (full width) */}
-          <div className="absolute inset-0">
-            <LandingMockup />
-          </div>
+        {/* Slider con proporción de celular vertical — centrado */}
+        <div className="flex justify-center">
           <div
-            className="absolute top-3 right-3 z-20 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
-            style={{ backgroundColor: '#3A9DA6' }}
+            ref={containerRef}
+            className="relative select-none"
+            style={{
+              width: '100%',
+              maxWidth: 560,
+              height: 'clamp(560px, 80vh, 640px)',
+              borderRadius: 26,
+              overflow: 'hidden',
+              cursor: 'ew-resize',
+              background: '#1c1c1e',
+              boxShadow: '0 30px 60px -15px rgba(0,0,0,0.4)',
+            }}
+            onMouseMove={(e) => { if (dragging.current) handleMove(e.clientX) }}
+            onTouchMove={(e) => handleMove(e.touches[0].clientX)}
           >
-            DESPUÉS
-          </div>
-
-          {/* ANTES — clipped overlay */}
-          {containerWidth > 0 && (
+            {/* Panel ANTES (izquierda) — teléfono completo anclado a la izquierda */}
             <div
-              className="absolute inset-0 overflow-hidden"
-              style={{ width: `${position}%` }}
+              className="absolute overflow-hidden"
+              style={{ top: 0, left: 0, bottom: 0, width: `${position}%` }}
             >
-              <div style={{ width: `${containerWidth}px`, height: '100%' }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: `${containerWidth / 2}px` }}>
                 <InstagramMockup />
               </div>
             </div>
-          )}
-          <div
-            className="absolute top-3 left-3 z-20 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
-            style={{ backgroundColor: '#8494A8' }}
-          >
-            ANTES
-          </div>
 
-          {/* Divider handle */}
-          <div
-            className="absolute top-0 bottom-0 z-10 flex items-center justify-center"
-            style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
-            onMouseDown={() => { dragging.current = true }}
-            onTouchStart={() => {}}
-          >
-            <div className="w-0.5 h-full bg-white/80 absolute" />
-            <div className="relative w-9 h-9 bg-white rounded-full shadow-lg flex items-center justify-center border border-gray-100">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M4 3L1 7L4 11M10 3L13 7L10 11" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+            {/* Panel DESPUÉS (derecha) — teléfono completo anclado a la derecha */}
+            <div
+              className="absolute overflow-hidden"
+              style={{ top: 0, right: 0, bottom: 0, width: `${100 - position}%` }}
+            >
+              <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: `${containerWidth / 2}px` }}>
+                <LandingMockup />
+              </div>
+            </div>
+
+            {/* Etiquetas siempre visibles sobre ambos paneles */}
+            <div
+              className="absolute top-3 left-3 z-20 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
+              style={{ backgroundColor: '#8494A8' }}
+            >
+              ANTES
+            </div>
+            <div
+              className="absolute top-3 right-3 z-20 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
+              style={{ backgroundColor: '#3A9DA6' }}
+            >
+              DESPUÉS
+            </div>
+
+            {/* Línea divisoria con handle */}
+            <div
+              className="absolute top-0 bottom-0 z-10 flex items-center justify-center"
+              style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
+              onMouseDown={() => { dragging.current = true }}
+              onTouchStart={() => {}}
+            >
+              <div className="w-0.5 h-full bg-white/80 absolute" />
+              <div className="relative w-9 h-9 bg-white rounded-full shadow-lg flex items-center justify-center border border-gray-100">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M4 3L1 7L4 11M10 3L13 7L10 11" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
 
-        <p className="text-center text-gray-400 text-sm mt-4 select-none">
+        <p className="text-center text-gray-400 text-sm mt-5 select-none">
           ← Arrastra para comparar →
         </p>
       </div>
