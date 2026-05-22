@@ -1,5 +1,3 @@
-import { useRef, useState, useEffect, useCallback } from 'react'
-
 function WaIcon({ size = 12 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -9,26 +7,70 @@ function WaIcon({ size = 12 }) {
   )
 }
 
-function PhoneFrame({ children }) {
+function TabletFrame({ children, variant = 'before' }) {
+  const isBefore = variant === 'before'
   return (
     <div
-      className="w-full h-full flex flex-col"
-      style={{ background: '#1c1c1e', padding: '6px 8px 8px' }}
+      style={{
+        borderRadius: 20,
+        background: isBefore ? '#CBD5E1' : '#F0FAFB',
+        border: `3px solid ${isBefore ? '#94A3B8' : '#22D3EE'}`,
+        padding: '12px 10px 10px',
+        boxShadow: isBefore
+          ? '0 4px 20px rgba(0,0,0,0.10)'
+          : '0 8px 40px rgba(34,211,238,0.22), 0 2px 8px rgba(34,211,238,0.10)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 8,
+        height: '100%',
+        opacity: isBefore ? 0.78 : 1,
+      }}
     >
-      {/* Dynamic island */}
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
-        <div style={{ width: 36, height: 7, background: '#000', borderRadius: 10 }} />
+      {/* Camera strip */}
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 5 }}>
+        <div
+          style={{
+            width: 22,
+            height: 3,
+            borderRadius: 10,
+            background: isBefore ? '#94A3B8' : '#67E8F9',
+          }}
+        />
+        <div
+          style={{
+            width: 6,
+            height: 6,
+            borderRadius: '50%',
+            background: isBefore ? '#6B7280' : '#22D3EE',
+          }}
+        />
       </div>
+
       {/* Screen */}
       <div
-        className="flex-1 bg-white overflow-hidden flex flex-col"
-        style={{ borderRadius: 15 }}
+        style={{
+          flex: 1,
+          background: 'white',
+          borderRadius: 12,
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
       >
         {children}
       </div>
-      {/* Home indicator */}
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 5 }}>
-        <div style={{ width: 28, height: 3, background: '#555', borderRadius: 10 }} />
+
+      {/* Home bar */}
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div
+          style={{
+            width: 50,
+            height: 3.5,
+            borderRadius: 10,
+            background: isBefore ? '#94A3B8' : '#22D3EE',
+            opacity: isBefore ? 0.6 : 0.9,
+          }}
+        />
       </div>
     </div>
   )
@@ -36,7 +78,7 @@ function PhoneFrame({ children }) {
 
 function InstagramMockup() {
   return (
-    <PhoneFrame>
+    <>
       {/* Top bar */}
       <div
         className="flex-shrink-0 flex items-center justify-between"
@@ -79,7 +121,6 @@ function InstagramMockup() {
           </div>
         </div>
 
-        {/* Name + bio — sin referencias a ciudad */}
         <p style={{ fontSize: 11, fontWeight: 700, color: '#262626', marginBottom: 2 }}>
           Tu Negocio
         </p>
@@ -87,7 +128,6 @@ function InstagramMockup() {
           Servicios varios | Link en bio ↓
         </p>
 
-        {/* Editar perfil */}
         <div
           style={{
             border: '1px solid #dbdbdb',
@@ -132,7 +172,7 @@ function InstagramMockup() {
         </svg>
       </div>
 
-      {/* Post grid — 6 cuadros con opacidad variada para look desordenado */}
+      {/* Post grid */}
       <div
         className="flex-1 grid grid-cols-3"
         style={{ gap: 2, background: '#dbdbdb', overflow: 'hidden' }}
@@ -141,7 +181,7 @@ function InstagramMockup() {
           <div key={i} style={{ background: `rgba(107,114,128,${opacity})` }} />
         ))}
       </div>
-    </PhoneFrame>
+    </>
   )
 }
 
@@ -180,7 +220,7 @@ const WHY_ITEMS = [
 
 function LandingMockup() {
   return (
-    <PhoneFrame>
+    <>
       {/* Header */}
       <div
         className="flex-shrink-0 flex items-center justify-between"
@@ -201,7 +241,6 @@ function LandingMockup() {
         className="flex-shrink-0"
         style={{ background: '#E4F3F5', padding: '9px 14px', textAlign: 'center' }}
       >
-        {/* Estrellas de calificación en lugar del badge de ciudad */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: 2, marginBottom: 6 }}>
           {[1, 2, 3, 4, 5].map((s) => (
             <svg key={s} width="10" height="10" viewBox="0 0 24 24" fill="#F59E0B">
@@ -352,37 +391,14 @@ function LandingMockup() {
           Agendar por WhatsApp
         </div>
       </div>
-    </PhoneFrame>
+    </>
   )
 }
 
 export default function BeforeAfterSlider() {
-  const containerRef    = useRef(null)
-  const dragging        = useRef(false)
-  const [position, setPosition]             = useState(50)
-  const [containerWidth, setContainerWidth] = useState(560)
-
-  useEffect(() => {
-    const obs = new ResizeObserver(([entry]) => setContainerWidth(entry.contentRect.width))
-    if (containerRef.current) obs.observe(containerRef.current)
-    return () => obs.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const onUp = () => { dragging.current = false }
-    window.addEventListener('mouseup', onUp)
-    return () => window.removeEventListener('mouseup', onUp)
-  }, [])
-
-  const handleMove = useCallback((clientX) => {
-    if (!containerRef.current) return
-    const rect = containerRef.current.getBoundingClientRect()
-    setPosition(Math.min(Math.max(((clientX - rect.left) / rect.width) * 100, 5), 95))
-  }, [])
-
   return (
     <section className="py-20 px-4 sm:px-6 bg-aqua-50">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
             Tus clientes llegan con dudas
@@ -390,78 +406,33 @@ export default function BeforeAfterSlider() {
           <p className="text-lg text-gray-500">¿A dónde los mandas?</p>
         </div>
 
-        {/* Slider con proporción de celular vertical — centrado */}
-        <div className="flex justify-center">
-          <div
-            ref={containerRef}
-            className="relative select-none"
-            style={{
-              width: '100%',
-              maxWidth: 560,
-              height: 'clamp(560px, 80vh, 640px)',
-              borderRadius: 26,
-              overflow: 'hidden',
-              cursor: 'ew-resize',
-              background: '#1c1c1e',
-              boxShadow: '0 30px 60px -15px rgba(0,0,0,0.4)',
-            }}
-            onMouseMove={(e) => { if (dragging.current) handleMove(e.clientX) }}
-            onTouchMove={(e) => handleMove(e.touches[0].clientX)}
-          >
-            {/* Panel ANTES (izquierda) — teléfono completo anclado a la izquierda */}
-            <div
-              className="absolute overflow-hidden"
-              style={{ top: 0, left: 0, bottom: 0, width: `${position}%` }}
-            >
-              <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: `${containerWidth / 2}px` }}>
-                <InstagramMockup />
-              </div>
-            </div>
-
-            {/* Panel DESPUÉS (derecha) — teléfono completo anclado a la derecha */}
-            <div
-              className="absolute overflow-hidden"
-              style={{ top: 0, right: 0, bottom: 0, width: `${100 - position}%` }}
-            >
-              <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: `${containerWidth / 2}px` }}>
-                <LandingMockup />
-              </div>
-            </div>
-
-            {/* Etiquetas siempre visibles sobre ambos paneles */}
-            <div
-              className="absolute top-3 left-3 z-20 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
-              style={{ backgroundColor: '#8494A8' }}
+        <div className="flex flex-col md:flex-row gap-10 md:gap-12 items-stretch justify-center">
+          {/* ── ANTES ── */}
+          <div className="relative w-full mx-auto md:mx-0" style={{ maxWidth: 320, minHeight: 520 }}>
+            <span
+              className="absolute -top-3 left-4 z-10 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
+              style={{ backgroundColor: '#475569' }}
             >
               ANTES
-            </div>
-            <div
-              className="absolute top-3 right-3 z-20 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
-              style={{ backgroundColor: '#3A9DA6' }}
+            </span>
+            <TabletFrame variant="before">
+              <InstagramMockup />
+            </TabletFrame>
+          </div>
+
+          {/* ── DESPUÉS ── */}
+          <div className="relative w-full mx-auto md:mx-0" style={{ maxWidth: 320, minHeight: 520 }}>
+            <span
+              className="absolute -top-3 right-4 z-10 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
+              style={{ backgroundColor: '#06B6D4' }}
             >
               DESPUÉS
-            </div>
-
-            {/* Línea divisoria con handle */}
-            <div
-              className="absolute top-0 bottom-0 z-10 flex items-center justify-center"
-              style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
-              onMouseDown={() => { dragging.current = true }}
-              onTouchStart={() => {}}
-            >
-              <div className="w-0.5 h-full bg-white/80 absolute" />
-              <div className="relative w-9 h-9 bg-white rounded-full shadow-lg flex items-center justify-center border border-gray-100">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M4 3L1 7L4 11M10 3L13 7L10 11" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-            </div>
+            </span>
+            <TabletFrame variant="after">
+              <LandingMockup />
+            </TabletFrame>
           </div>
         </div>
-
-        <p className="text-center text-gray-400 text-sm mt-5 select-none">
-          ← Arrastra para comparar →
-        </p>
       </div>
     </section>
   )
