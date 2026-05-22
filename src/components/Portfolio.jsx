@@ -34,7 +34,7 @@ const PROJECTS = [
     tags: ['Salud', 'Fisioterapia', 'Domicilio', 'WhatsApp'],
     url: 'https://jjbm-fisioterapeuta.vercel.app/',
     sector: 'Salud y Bienestar',
-    logo: '/LOGOS/jjbm-logo.jpeg',
+    logo: '/LOGOS/jjbm-logo.jpg',
   },
 ]
 
