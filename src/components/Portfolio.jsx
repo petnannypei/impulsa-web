@@ -26,6 +26,16 @@ const PROJECTS = [
     sector: 'Consultoría técnica en construcción',
     logo: '/LOGOS/QCCS-logo.jpg',
   },
+  {
+    id: 'jjbm',
+    title: 'JJBM — Fisioterapeuta',
+    description:
+      'Landing profesional para fisioterapia a domicilio. Servicios especializados, proceso de atención paso a paso y conexión directa a WhatsApp.',
+    tags: ['Salud', 'Fisioterapia', 'Domicilio', 'WhatsApp'],
+    url: 'https://jjbm-fisioterapeuta.vercel.app/',
+    sector: 'Salud y Bienestar',
+    logo: '/LOGOS/jjbm-logo.jpeg',
+  },
 ]
 
 export default function Portfolio() {
