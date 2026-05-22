@@ -1,16 +1,10 @@
-import { Eye, MessageCircle, MapPin } from 'lucide-react'
+import { Eye, MessageCircle } from 'lucide-react'
 import { WA_LINKS } from '../constants'
 
 export default function Hero() {
   return (
     <section className="pt-28 pb-20 px-4 sm:px-6 bg-white">
       <div className="max-w-4xl mx-auto text-center">
-        {/* Location badge */}
-        <div className="inline-flex items-center gap-1.5 bg-aqua-100 text-aqua-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-8">
-          <MapPin size={13} />
-          Pereira · Eje Cafetero
-        </div>
-
         {/* Headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-6">
           Tu negocio merece más<br className="hidden sm:block" />

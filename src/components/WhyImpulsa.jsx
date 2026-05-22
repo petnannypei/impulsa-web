@@ -1,4 +1,4 @@
-import { Monitor, Clock, Server, MapPin } from 'lucide-react'
+import { Monitor, Clock, Server, Search } from 'lucide-react'
 
 const CARDS = [
   {
@@ -17,9 +17,9 @@ const CARDS = [
     desc: 'Servidores de última generación. $0 mensuales.',
   },
   {
-    Icon: MapPin,
-    title: 'Hecho en Pereira',
-    desc: 'Conocemos el mercado local.',
+    Icon: Search,
+    title: 'Investigamos tu mercado',
+    desc: 'Analizamos tu competencia y tu cliente ideal para que tu landing hable su idioma.',
   },
 ]
 
