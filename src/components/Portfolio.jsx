@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -38,9 +38,19 @@ const PROJECTS = [
   },
 ]
 
+const IFRAME_STYLE = {
+  width: '200%',
+  height: '200%',
+  transform: 'scale(0.5)',
+  transformOrigin: 'top left',
+  border: 'none',
+  pointerEvents: 'none',
+}
+
 export default function Portfolio() {
   const sectionRef = useRef(null)
   const scrollRef  = useRef(null)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -63,12 +73,35 @@ export default function Portfolio() {
     return () => ctx.revert()
   }, [])
 
+  useEffect(() => {
+    const container = scrollRef.current
+    if (!container) return
+    const cards = Array.from(container.querySelectorAll('.portfolio-card'))
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            setActiveIndex(cards.indexOf(entry.target))
+          }
+        })
+      },
+      { root: container, threshold: 0.5 }
+    )
+    cards.forEach((card) => observer.observe(card))
+    return () => observer.disconnect()
+  }, [])
+
   const scroll = (dir) => {
-    scrollRef.current?.scrollBy({ left: dir * 360, behavior: 'smooth' })
+    scrollRef.current?.scrollBy({ left: dir * 400, behavior: 'smooth' })
+  }
+
+  const scrollToCard = (index) => {
+    const cards = scrollRef.current?.querySelectorAll('.portfolio-card')
+    cards?.[index]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
   }
 
   return (
-    <section id="portafolio" className="py-20 bg-gray-50" ref={sectionRef}>
+    <section id="portafolio" className="py-20 bg-gray-50 overflow-x-hidden" ref={sectionRef}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-end justify-between mb-12">
           <div>
@@ -93,14 +126,13 @@ export default function Portfolio() {
 
         <div
           ref={scrollRef}
-          className="no-scrollbar flex gap-5 overflow-x-auto pb-2 snap-x snap-mandatory"
+          className="no-scrollbar flex gap-4 sm:gap-5 overflow-x-auto pb-2 snap-x snap-mandatory"
         >
           {PROJECTS.map((project) => (
             <div
               key={project.id}
-              className="portfolio-card flex-shrink-0 w-[320px] sm:w-[380px] bg-white rounded-2xl border border-gray-100 overflow-hidden snap-start"
+              className="portfolio-card flex-shrink-0 w-[calc(100vw-2rem)] sm:w-[380px] bg-white rounded-2xl border border-gray-100 overflow-hidden snap-start"
             >
-              {/* iframe preview */}
               <div
                 className="relative overflow-hidden rounded-t-2xl"
                 style={{ aspectRatio: '16 / 9', background: '#f1f5f9' }}
@@ -109,19 +141,11 @@ export default function Portfolio() {
                   src={project.url}
                   title={project.title}
                   loading="lazy"
-                  style={{
-                    width: '200%',
-                    height: '200%',
-                    transform: 'scale(0.5)',
-                    transformOrigin: 'top left',
-                    border: 'none',
-                    pointerEvents: 'none',
-                  }}
+                  style={IFRAME_STYLE}
                   tabIndex="-1"
                   aria-hidden="true"
                 />
               </div>
-              {/* Card content */}
               <div className="p-5">
                 {project.logo && (
                   <img
@@ -156,6 +180,20 @@ export default function Portfolio() {
                 </a>
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Dots — mobile only */}
+        <div className="flex sm:hidden justify-center gap-2 mt-5">
+          {PROJECTS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToCard(i)}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                i === activeIndex ? 'bg-aqua-500' : 'bg-gray-300'
+              }`}
+              aria-label={`Proyecto ${i + 1}`}
+            />
           ))}
         </div>
       </div>
