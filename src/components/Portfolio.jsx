@@ -35,7 +35,7 @@ const PROJECTS = [
     url: 'https://jjbm-fisioterapeuta.vercel.app/',
     sector: 'Salud y Bienestar',
     logo: '/LOGOS/jjbm-logo.jpg',
-    preview: '/LOGOS/jjbm-logo.jpg',
+    preview: '/LOGOS/printscreen.png',
   },
 ]
 
@@ -139,14 +139,11 @@ export default function Portfolio() {
                 style={{ aspectRatio: '16 / 9', background: '#f1f5f9' }}
               >
                 {project.preview ? (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gray-800">
-                    <img
-                      src={project.preview}
-                      alt={project.title}
-                      className="max-h-20 max-w-[65%] object-contain"
-                    />
-                    <div className="absolute inset-0 bg-black/30" />
-                  </div>
+                  <img
+                    src={project.preview}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
                 ) : (
                   <iframe
                     src={project.url}
@@ -170,7 +167,7 @@ export default function Portfolio() {
                   {project.sector}
                 </p>
                 <h3 className="text-gray-900 font-bold text-lg leading-snug mb-2">{project.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-4">{project.description}</p>
+                <p className="text-gray-500 text-sm leading-relaxed mb-4 break-words">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-5">
                   {project.tags.map((tag) => (
                     <span
