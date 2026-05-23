@@ -8,6 +8,7 @@ import SplitTextSection from './components/SplitTextSection'
 import HowItWorks from './components/HowItWorks'
 import Portfolio from './components/Portfolio'
 import Packages from './components/Packages'
+import PostSale from './components/PostSale'
 import FormIntake from './components/FormIntake'
 import WhyImpulsa from './components/WhyImpulsa'
 import FAQ from './components/FAQ'
@@ -27,6 +28,7 @@ export default function App() {
         <HowItWorks />
         <Portfolio />
         <Packages />
+        <PostSale />
         <FormIntake />
         <WhyImpulsa />
         <FAQ />
