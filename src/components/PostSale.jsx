@@ -6,7 +6,7 @@ const CARDS = [
     id: 'mensual',
     title: 'Mantenimiento Mensual',
     badge: 'Recomendado',
-    price: '$100.000',
+    price: '$60.000',
     freq: 'COP / mes',
     features: [
       'Hasta 3 cambios menores por mes (textos, fotos, precios)',
@@ -22,8 +22,8 @@ const CARDS = [
     id: 'demanda',
     title: 'Cambios por Demanda',
     badge: null,
-    price: '$40.000',
-    freq: 'COP / por cambio',
+    price: '$80.000',
+    freq: 'COP / por cambio · Después de aprobada y lanzada tu landing',
     features: [
       'Modificación de textos, fotos o precios',
       'Sin compromiso mensual',
@@ -41,7 +41,7 @@ const CARDS = [
     price: '$400.000',
     freq: 'COP / año',
     features: [
-      'Hasta 12 cambios al año (1 por mes)',
+      'Los cambios que necesites',
       'Soporte técnico prioritario',
       'Actualización de dependencias y seguridad',
       'Monitoreo permanente',

@@ -107,7 +107,7 @@ export default function Portfolio() {
         <div className="flex items-end justify-between mb-12">
           <div>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Portafolio</h2>
-            <p className="text-gray-500 text-lg">Trabajos reales para negocios en el Eje Cafetero</p>
+            <p className="text-gray-500 text-lg">Negocios a los que les hemos sumado valor con nuestro servicio</p>
           </div>
           <div className="hidden sm:flex gap-2">
             <button

@@ -15,12 +15,12 @@ const FAQS = [
     a: 'Nada. Tú solo llenas un formulario con la información de tu negocio y nosotros nos encargamos de todo: diseño, redacción, programación y publicación.',
   },
   {
-    q: '¿Qué incluye el hosting gratis?',
-    a: 'Tu página se aloja en servidores de última generación (Vercel) con certificado de seguridad SSL, velocidad ultra rápida y disponibilidad global. Para una landing de negocio local, el consumo es mínimo y el costo es $0 COP mensuales.',
+    q: '¿Qué es un dominio?',
+    a: 'Un dominio es el nombre de tu página en internet, tipo www.tunegocio.com. Es como la dirección de tu local pero en internet. Sin dominio tu landing funciona igual de bien, pero la dirección se ve más larga y técnica. Con dominio se ve profesional, tus clientes la recuerdan fácil y genera más confianza. Cuesta unos $50.000 al año y tú eres el dueño — nosotros te lo conectamos sin costo adicional. Si ya tienes uno, simplemente lo vinculamos a tu landing.',
   },
   {
-    q: '¿Puedo tener mi propio dominio (.com)?',
-    a: 'Sí. Tú compras tu dominio en proveedores como GoDaddy o Namecheap (aprox. $50.000 COP/año) y nosotros lo conectamos a tu landing sin costo adicional.',
+    q: '¿Qué es un hosting?',
+    a: 'El hosting es el espacio donde vive tu página en internet — es lo que hace que esté disponible 24/7 para cualquier persona que entre. Nosotros usamos servidores de última generación que utilizan empresas como Uber y Netflix. Tu landing al ser liviana y optimizada consume muy pocos recursos, por eso el hosting está incluido sin costo mensual. Si ya tienes un hosting propio, podemos trabajar con él; si no tienes, nosotros nos encargamos de todo.',
   },
   {
     q: '¿En cuánto tiempo queda lista?',
