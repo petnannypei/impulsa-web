@@ -16,11 +16,19 @@ const FAQS = [
   },
   {
     q: '¿Qué es un dominio?',
-    a: 'Un dominio es el nombre de tu página en internet, tipo www.tunegocio.com. Es como la dirección de tu local pero en internet. Sin dominio tu landing funciona igual de bien, pero la dirección se ve más larga y técnica. Con dominio se ve profesional, tus clientes la recuerdan fácil y genera más confianza. Cuesta unos $50.000 al año y tú eres el dueño — nosotros te lo conectamos sin costo adicional. Si ya tienes uno, simplemente lo vinculamos a tu landing.',
+    a: 'Un dominio es el nombre de tu página en internet, tipo www.tunegocio.com. Es como la dirección de tu local pero en internet. Sin dominio tu landing funciona igual de bien, pero la dirección se ve más larga y técnica. Con dominio se ve profesional, tus clientes la recuerdan fácil y genera más confianza. Cuesta unos $50.000 al año y tú eres el dueño.',
+  },
+  {
+    q: '¿Puedo tener mi propio dominio (.com)?',
+    a: 'Sí. Tú compras tu dominio en proveedores como GoDaddy o Namecheap y nosotros te lo conectamos sin costo adicional. Si ya tienes uno, simplemente lo vinculamos a tu landing.',
   },
   {
     q: '¿Qué es un hosting?',
-    a: 'El hosting es el espacio donde vive tu página en internet — es lo que hace que esté disponible 24/7 para cualquier persona que entre. Nosotros usamos servidores de última generación que utilizan empresas como Uber y Netflix. Tu landing al ser liviana y optimizada consume muy pocos recursos, por eso el hosting está incluido sin costo mensual. Si ya tienes un hosting propio, podemos trabajar con él; si no tienes, nosotros nos encargamos de todo.',
+    a: 'El hosting es el espacio donde vive tu página en internet — es lo que hace que esté disponible 24/7 para cualquier persona que entre. Nosotros usamos servidores de última generación que utilizan empresas como Uber y Netflix. Tu landing al ser liviana y optimizada consume muy pocos recursos, por eso el hosting está incluido sin costo mensual.',
+  },
+  {
+    q: '¿Qué incluye el hosting gratis?',
+    a: 'Certificado de seguridad SSL, velocidad ultra rápida, disponibilidad global y $0 COP mensuales. Si ya tienes un hosting propio, podemos trabajar con él; si no tienes, nosotros nos encargamos de todo.',
   },
   {
     q: '¿En cuánto tiempo queda lista?',
