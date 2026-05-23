@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     q: '¿Qué es un dominio?',
-    a: 'Un dominio es el nombre de tu página en internet, tipo www.tunegocio.com. Es como la dirección de tu local pero en internet. Sin dominio tu landing funciona igual de bien, pero la dirección se ve más larga y técnica. Con dominio se ve profesional, tus clientes la recuerdan fácil y genera más confianza. Cuesta unos $50.000 al año y tú eres el dueño.',
+    a: 'Un dominio es el nombre de tu página en internet, tipo www.tunegocio.com. Es como la dirección de tu local pero en internet. Sin dominio tu landing funciona igual de bien, pero la dirección se ve más larga y técnica. Con dominio se ve profesional, tus clientes la recuerdan fácil y genera más confianza. Cuesta unos $100.000 promedio en cualquier proveedor de hosting al año y tú eres el dueño.',
   },
   {
     q: '¿Puedo tener mi propio dominio (.com)?',

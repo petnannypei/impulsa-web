@@ -413,7 +413,7 @@ export default function BeforeAfterSlider() {
               className="absolute -top-3 left-4 z-10 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
               style={{ backgroundColor: '#475569' }}
             >
-              ANTES
+              TU RECURSO ACTUAL
             </span>
             <TabletFrame variant="before">
               <InstagramMockup />
@@ -426,7 +426,7 @@ export default function BeforeAfterSlider() {
               className="absolute -top-3 right-4 z-10 text-white text-xs font-bold px-3 py-1 rounded-full shadow"
               style={{ backgroundColor: '#06B6D4' }}
             >
-              DESPUÉS
+              TU EVOLUCIÓN
             </span>
             <TabletFrame variant="after">
               <LandingMockup />
