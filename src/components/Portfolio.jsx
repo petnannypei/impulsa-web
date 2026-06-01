@@ -37,6 +37,16 @@ const PROJECTS = [
     logo: '/LOGOS/jjbm-logo.jpg',
     preview: '/LOGOS/printscreen.png',
   },
+  {
+    id: 'arqMb',
+    title: 'Arq. Mario Benavides',
+    description:
+      'Portafolio profesional para arquitecto. Proyectos de arquitectura, interiorismo y dirección de obra con galería visual y conexión directa a WhatsApp.',
+    tags: ['Marca Personal', 'Arquitectura', 'Portafolio', 'Interiorismo'],
+    url: 'https://portafolio-arq-mb.vercel.app/',
+    sector: 'Marca Personal',
+    preview: '/LOGOS/portafolio-printscreen.png',
+  },
 ]
 
 const IFRAME_STYLE = {
