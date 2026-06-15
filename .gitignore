@@ -26,3 +26,13 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+# Archivos pesados / no versionables
+MARKETING/
+SECOND BRAIN/
+PROYECTOS CLIENTES/
+*.psd
+*.mp4
+*.mp3
+*.docx
+*.pdf
