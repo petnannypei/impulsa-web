@@ -1,4 +1,4 @@
-const WA_NUMBER = '573052917776'
+const WA_NUMBER = '573171184978'
 const WA_BASE = `https://wa.me/${WA_NUMBER}`
 const enc = (t) => encodeURIComponent(t)
 
